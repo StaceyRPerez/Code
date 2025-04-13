@@ -1,0 +1,33 @@
+#Calculate the average score for each project, but only include projects where more than one team member has provided a score.
+
+#Your output should include the project ID and the calculated average score for each qualifying project.
+
+
+
+
+#Incorrect Code: SELECT project_id, 
+    AVERAGE score
+FROM project_data,
+WHERE team_member_id > 1;
+
+
+#Reasoning: 
+No need for comma after project_data
+Average is actually written out as "AVG" you need to have anything for a calculation in parenthesis
+The average function line should read as AVG(score) as average_score that way it will show up as an average score. Currently
+there is no average score column so you need to make a new column
+ANY calculation needs to be in caps
+also when you represent an "as" whatever you want it to be titled does not need to be in single quotation marks
+The WHERE filter is not necessarily needed because you are better off using the GROUP BY and HAVING functions, It should
+look something like this
+GROUP BY project_id
+HAVING COUNT(team_member_id) > 1; while one would normally read that as including team member IDS who show up more than once but
+since we are grouping by Project ID and not Team Member ID then the function is then returning projects and which ones have more
+than one team member in their team so the correct code should look something like this: 
+
+
+SELECT project_id, 
+  AVG(score) AS average_score
+FROM project_data
+GROUP BY project_id, 
+HAVING COUNT(team_member_id) >1;
