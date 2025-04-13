@@ -1,0 +1,17 @@
+#Find doctors with the last name of 'Johnson' in the employee list. The output should contain both their first and last names.
+
+
+
+SELECT first_name, 
+    last_name
+FROM employee_list
+WHERE last_name = 'Johnson' and profession = 'Doctor';
+
+
+
+
+#SELECT is indicating the columns you need to source the data from
+#FROM is indicating the table name you need to look at
+#WHERE are your specific filters, in this case the employees all need to have this specific last name and also need to be a doctor, always
+refer to the table and how they indicate a profession and spell it out or the ask you are looking for or there will be errors in your code, 
+always end your code with correct punctuation!
