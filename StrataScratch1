@@ -9,7 +9,8 @@ FROM
     fb_comments_count
 WHERE
     created_at BETWEEN '2020-01-10'::DATE AND '2020-02-10'::DATE  
-GROUP BY user_id; 
+GROUP BY 
+     user_id; 
 
 
 
