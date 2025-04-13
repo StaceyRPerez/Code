@@ -1,0 +1,19 @@
+#Return the total number of comments received for each user in the 30 or less days before 2020-02-10. Don't output users who haven't received any comment in the defined time period.
+
+
+
+SELECT
+    user_id, 
+    COUNT(*) AS total_comments
+FROM
+    fb_comments_count
+WHERE
+    created_at BETWEEN '2020-01-10'::DATE AND '2020-02-10'::DATE  
+GROUP BY user_id; 
+
+
+
+#SELECT = all of the users but being defined as "total_comments" 
+#FROM = the table was indicated as fb_comments_count
+#WHERE = the filter needs to be between the end date and thirty days before date, use the between function for two dates 
+#GROUP BY = The original ask asked 
