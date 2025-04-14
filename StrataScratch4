@@ -1,0 +1,15 @@
+#Return a distribution of user activity by calendar day across all months. By distribution, we mean the total number of posts made on each day of the month, aggregated across all months and years.
+
+
+
+SELECT EXTRACT(DAY FROM post_date) AS day_of_month,
+  COUNT(*) AS post_count
+FROM facebook_posts
+GROUP BY day_of_month
+ORDER BY day_of_month;
+
+
+
+#here I was able to take the day from the date column and rename it then also add in a column that we are saying all counts will be represented as post_count
+From is good
+Group BY was implied
