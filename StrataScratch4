@@ -12,4 +12,7 @@ ORDER BY day_of_month;
 
 #here I was able to take the day from the date column and rename it then also add in a column that we are saying all counts will be represented as post_count
 From is good
-Group BY was implied
+SELECT post_date_ I needed to start off here because I need the column of days of the month, I need to EXTRACT it and enter in DAY FROM as well
+FROM is implied
+GROUP BY day_of_month
+Group BY day_of_month is also implied
