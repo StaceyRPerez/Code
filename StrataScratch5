@@ -1,0 +1,17 @@
+#How many customers placed an order and what is the average order amount?
+
+
+
+
+SELECT COUNT(DISTINCT customer_id) AS total_customers,
+    AVG(amount) AS average_order_amount
+FROM postmates_orders;
+
+
+
+
+#here they only are askig for two columns with one and one result I don't need to use WHERE or any filters, I will be using SELECT for the majority of this
+SELECT is used to use custoemr_id and rename it to the total amount of custoers but I HAVE to put in COUNT (DISTINCT) because the customer IDS are all different
+so I need it
+AVG make sure i am not using extra spaces from formulas to their ask plugged in number
+FROM is implied
