@@ -1,0 +1,24 @@
+#Write a query that returns the number of unique users per client per month.
+
+
+
+
+SELECT client_id,
+    MONTH(time_id) as month
+FROM fact_events
+GROUP BY client_id,
+    MONTH(time_id);
+
+
+
+
+
+Since the ask if calling for client, the client is in the "client_id" column so that is where we 
+are selecting data from and want to return
+MONTH is also being asked to be returned so we can use the MONTH formula which would need to be
+extracted from (time_id) and we want to take the month away from it only and since the whole
+date is mondy, day, and year, we need to denote the "as month" to just include that 
+FROM is the table
+The ask is asking that client is grouped for each month but not just the month we also
+need to group the client as well so we write GROUP BY client_id, 
+MONTH(time_id); There does not need to be any where since there is no filtering
