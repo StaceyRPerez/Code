@@ -1,0 +1,10 @@
+************In this challenge, your database table is structured with positive and negative values, 
+the titles of the columns are "id" and "Value". The challenge is to write a SQL query for this table 
+that’ll return all the opposites of the values in the Value column. If a number is negative, make it positive
+and vice versa. What would the SQL query look like?*********************
+
+
+
+SELECT "id"
+  "Value"* AS -1 OppositeValue
+FROM dataset_table;
