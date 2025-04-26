@@ -4,7 +4,8 @@
 
 
 SELECT client_id,
-    MONTH(time_id) as month
+    MONTH(time_id) AS month
+    COUNT(DISTINCT user_id) AS users_num
 FROM fact_events
 GROUP BY client_id,
     MONTH(time_id);
@@ -18,6 +19,7 @@ are selecting data from and want to return
 MONTH is also being asked to be returned so we can use the MONTH formula which would need to be
 extracted from (time_id) and we want to take the month away from it only and since the whole
 date is mondy, day, and year, we need to denote the "as month" to just include that 
+You need to add in COUNT because they are asking for the unique users, AS is just letting you categorize it a way you want
 FROM is the table
 The ask is asking that client is grouped for each month but not just the month we also
 need to group the client as well so we write GROUP BY client_id, 
