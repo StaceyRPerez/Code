@@ -1,0 +1,16 @@
+Adobe University Hiring Cohort Analysis
+Excel Project | Workday Data | 2024 Season Review
+
+For this project, I built a comprehensive cohort analysis in Excel to evaluate Adobe’s prior university hiring season. I consolidated multiple Workday reports using advanced formulas to create a master dataset, then developed multiple dashboard-style tabs to break down key metrics like terminations, promotions, and retention rates. Each tab featured interactive pivot tables, slicers, and visualizations (bar and line graphs) to help stakeholders easily explore the data. This tool was designed to inform allocation and budgeting decisions for the upcoming hiring season.
+
+
+![IMG_5388](https://github.com/user-attachments/assets/8421d8f2-122e-4d29-9374-8f576bf43b72)
+
+
+![IMG_5389](https://github.com/user-attachments/assets/e21f3fcc-9cad-41da-946b-94ffa7b0073c)
+
+
+![IMG_5389 (1)](https://github.com/user-attachments/assets/c666da8a-9d27-4ffc-8817-de1eb18ca3d4)
+
+
+![IMG_5391](https://github.com/user-attachments/assets/ac20071c-650a-4093-9c4f-2e0ff28d0896)
