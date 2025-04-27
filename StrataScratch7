@@ -1,0 +1,23 @@
+#Write a query that will calculate the number of shipments per month. 
+#The unique key for one shipment is a combination of shipment_id and sub_id.
+#Output the year_month in format YYYY-MM and the number of shipments in that month.
+
+
+
+
+SELECT COUNT(shipment_id),
+    DATE_FORMAT(shipment_date, '%Y-%m') date_ym
+FROM amazon_shipment
+GROUP BY date_ym;
+
+
+
+
+
+We want the number of shipments so we need to add "COUNT"
+The date needs to be represented in a specific format as the question is asking. 
+In this case we can use DATE_FORMAT then extract it from the date, to represent it in the format asking YYYY-MM we use:
+'%Y-%m'
+we leave the category title at the end of the line how we want it
+FROM is normal
+GROUP BY is how we designated the date earlier 
