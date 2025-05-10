@@ -1,0 +1,31 @@
+#Find the number of unique transactions and total sales for each of the product categories in 2017. Output the product categories, number of transactions, and total sales in descending order. The sales column represents the total cost the customer paid for the product so no additional calculations need to be done on the column.
+Only include product categories that have products sold.
+
+Tables: wfm_transactions, wfm_products
+
+
+
+
+
+
+SELECT 
+    wp.product_category,
+    COUNT(wt.transaction_id) AS transactions,
+    SUM(wt.sales) AS total_sales
+FROM wfm_transactions wt
+JOIN wfm_products wp
+    ON wt.product_id = wp.product_id
+GROUP BY wp.product_category
+HAVING SUM(wt.sales) > 0
+ORDER BY total_sales DESC;
+
+
+
+Going line by line, select is the table we are starting with wp helps us designate the abreviated table and then we enter the column
+We need to also have transactions as the question is asking and title it as wt since it is from the other table where we have transaction number and give it a title with AS
+we need our final column SUM to give us the total sales it is a calculation so open parenthesis and AS for the name you'll give it
+FROM we indicate transactions as it is the primary driver of the aggregation with the abreviation after
+JOIN straightforward
+Group by straight forward 
+HAVING SUM >0 adds in insurance that the sales only include transactions where product was sold^ the question is asking for it
+ORDER BY DESC straightforward
