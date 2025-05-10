@@ -1,9 +1,0 @@
-People Analytics Landing Page Dashboard
-Power BI Project | Data Visualization | RLS Strategy
-
-I designed and built a "People Analytics Landing Page" in Power BI to serve as the centralized home for all dashboards used by the People Analytics team. This new landing page streamlined access to key resources by consolidating all dashboards in one location. I created visualizations, added key metrics for at-a-glance insights, and developed a Row-Level Security (RLS) strategy to ensure appropriate access control across user groups.  
-
-
-
-
-![dashboard](PA%20Landing%20Page%20Dashboard.jpg)
