@@ -1,0 +1,28 @@
+#🔍 Practice Problem 1:
+Tables:
+
+orders(order_id, customer_id, order_date, product_id, revenue)
+
+products(product_id, product_name, category)
+
+Task:
+Write a SQL query to return each product category, the number of orders, and the total revenue generated. Only include categories that have at least one order. Sort the result by total revenue in descending order.
+
+
+
+
+
+
+SELECT 
+     p.category,
+     SUM(o.revenue) AS total_revenue_generated,
+     COUNT(o.order_id) AS number_of_orders
+FROM orders o
+JOIN products p
+     ON o.product_id = p.product_id
+GROUP BY p.category
+HAVING SUM(o.revenue) > 0
+ORDER BY total_revenue_generated DESC;
+
+
+HAVING and SUM need both together
