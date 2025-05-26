@@ -1,0 +1,17 @@
+Find the monthly active users for January 2021 for each account. Your output should have account_id and the monthly count for that account.
+
+
+
+
+
+SELECT
+    account_id,
+    DATE_FORMAT(record_date, '%m') AS date_m
+FROM
+    sf_events
+WHERE
+    record_date >= '2021-01-01' AND
+    record_date < '2021-02-01'
+GROUP BY
+    account_id,
+    date_m;
