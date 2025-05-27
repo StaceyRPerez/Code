@@ -1,0 +1,31 @@
+✅ Problem 1:
+Find the heaviest weight for each shipment.
+Output the shipment_id and the maximum weight.
+
+
+
+
+
+
+
+SELECT 
+    a.shipment_id, 
+    a.weight 
+FROM
+    amazon_shipment a 
+JOIN 
+    (  
+        SELECT 
+            shipment_id, 
+            MAX(weight) AS maximum_weight 
+        FROM
+            amazon_shipment 
+        GROUP BY 
+            shipment_id 
+    ) m ON a.shipment_id = m.shipment_id
+       AND a.weight = m.maximum_weight;
+
+
+
+
+Idenfifier on last AND specifically calls out the weight changes
