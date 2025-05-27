@@ -1,0 +1,30 @@
+Write a query to find the weight for each shipment's earliest shipment date. Output the shipment id along with the weight.
+
+
+
+SELECT
+    a.shipment_id,
+    a.weight
+FROM
+    amazon_shipment a
+JOIN (
+        SELECT
+            shipment_id, 
+            MIN(shipment_date) AS earliest_date
+        FROM amazon_shipment
+        GROUP BY shipment_id
+) e ON a.shipment_id = e.shipment_id
+   AND a.shipment_date = e.earliest_date;
+
+
+
+Here I am using an Inner Join to join a table and a sub query
+First give the columns identifieers from a join
+Then give the table an identifier
+Here I began my sub query-
+  I first identified my columns of shipment ID and earliest shipment date with the MIN function
+  From in my sub query does not need an idenfifier
+  Group by in sub query does not need an idenfifier 
+End your sub query statement with a closed parenthesis and small idenfifier
+State the ON values to watch for in each identifier, normally here you are using JOIN to join two tables but here you need to note the identifiers of the sub queries
+since you have two columns you need to note the identifiers on both columns
