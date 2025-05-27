@@ -1,0 +1,24 @@
+✅ Problem 2:
+Find the shipment date for each shipment's lightest package.
+Output the shipment_id and the shipment_date.
+
+
+
+
+
+
+SELECT
+  a.shipment_id,
+  a.shipment_date
+FROM
+  amazon_shipment a
+JOIN ( 
+  SELECT 
+    shipment_id, 
+    MIN(weight) AS min_weight
+  FROM
+    amazon_shipment
+  GROUP BY
+    shipment_id
+) m ON a.shipment_id = m.shipment_id
+AND a.weight=m.min_weight;
