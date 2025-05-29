@@ -1,0 +1,25 @@
+✅ Problem 3:
+Find the earliest shipment date for each sub_id.
+Output the sub_id and the earliest shipment_date.
+
+
+
+
+
+
+SELECT
+  a.sub_id,
+  a.shipment_date
+FROM
+  amazon_shipment a
+JOIN
+  (
+    SELECT
+      sub_id,
+      MIN(shipment_date) AS earliest_shipment_date
+    FROM
+      amazon_shipment
+    GROUP BY 
+      sub_id
+) s ON a.sub_id = s.sub_id
+  AND a.shipment_date = s.earliest_shipment_date;
