@@ -1,0 +1,20 @@
+#Count how many claims submitted in December 2021 are still pending. A claim is pending when it has neither an acceptance nor rejection date.
+
+
+
+
+SELECT COUNT(*) AS n_claims
+FROM cvs_claims
+WHERE MONTH(date_submitted) = 12
+  AND YEAR(date_submitted) = 2021
+  AND date_accepted IS NULL
+  AND date_rejected IS NULL
+
+
+
+
+SELECT is going to prefer * over SELECT COUNT DISTINCT because each column on the reference table implies
+that there are no duplicacte rows and so * is preferrable we don't need to use DISTINCT in this case
+FROM is straightforward
+WHERE MONTH & YEAR is straightforward
+Include the NULL function for both accepted and rejected because it represents no information 
