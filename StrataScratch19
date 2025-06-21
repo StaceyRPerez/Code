@@ -1,0 +1,21 @@
+#Given the education levels and salaries of a group of individuals, find what is the average salary for each level of education.
+
+
+
+
+
+
+
+
+SELECT
+    AVG(salary) AS average_salary,
+    education
+FROM
+    google_salaries
+GROUP BY
+    education;
+
+
+
+
+Titles for AS function do not need to be in quotes
