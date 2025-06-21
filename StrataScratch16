@@ -1,0 +1,30 @@
+#Find the search details for villas and houses with wireless internet access
+
+
+SELECT 
+   * 
+FROM 
+   airbnb_search_details 
+WHERE 
+   amenities LIKE '%Wireless Internet%' AND 
+   property_type IN ('House', 'Villa');
+
+
+
+
+
+
+We can use the * in this case because the question or ask is not specifically requiring a column type of return 
+they are only asking to filter so we can leave this as is.
+From is straightforward
+WHERE will have two different sub features so we need to join them with the AND because both need to be true
+villas with wireless internet access
+houses with wireless internet access
+Use your first line focusing on the amenities column and use the LIKE function since you want to get a pattern and not an exact match
+In this case because there is so much text to sift through LIKE is preferred over =
+Similarly, we need to use the % before and after the text because in the amenitities columns there is unnecessary text before AND after that we don't want
+If it was just before or just after we would use one % our next line of code then becomes amenities LIKE '%Wirelesss Internet%' AND 
+The ask is also telling us we need to filter for property_type for two versions
+In this example again the = function is not preferred because it only works best for ONE identifier, in this case we have 2 and to shorten 
+the code we use IN, if we had 3 property types we would just add it into the parenthesis with another comma
+The last line of the code becomes property_type IN ('House', 'Villa');
