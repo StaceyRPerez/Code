@@ -1,0 +1,44 @@
+#Why not just use the original table’s record dates? Because the question needs you to compare each row to its neighbors (previous and next day) within the same user; a single-row query on the base table can’t “see” those neighbors without window functions or messy self-joins.
+
+#Why a WITH (CTE) statement? It cleanly builds a mini table that already includes each row’s previous/next dates so the final step is a simple, readable filter; without it, you’d nest window logic inside the WHERE and make the query harder to reason about.
+
+#Why AS prev_day? It names the LAG(record_date) result so you can clearly test “is today exactly one day after the previous activity?” using DATEDIFF(record_date, prev_day) = 1.
+
+#Why AS next_day? It names the LEAD(record_date) result so you can also test “is the next activity exactly one day after today?” using DATEDIFF(next_day, record_date) = 1, proving a 3-day run.
+
+
+
+
+
+#Find all the users who were active for 3 consecutive days or more.
+
+
+
+
+
+
+
+WITH consecutive_days_table AS 
+    (
+    SELECT
+        user_id,
+        record_date,
+        LAG(record_date,1) OVER(PARTITION BY user_id ORDER BY record_date) AS previous_day,
+        LEAD(record_date,1) OVER(PARTITION BY user_id ORDER BY record_date) AS next_day
+    FROM
+        sf_events
+    )
+SELECT DISTINCT
+    user_id
+FROM
+    consecutive_days_table
+WHERE
+    DATEDIFF(record_date, previous_day)=1
+    AND DATEDIFF(next_day, record_date)=1;
+
+
+
+
+
+#A CTE statement is used to clean up the final code
+#creating the two AS statements helps clean up the code when you test and filter using DATEDIFF
