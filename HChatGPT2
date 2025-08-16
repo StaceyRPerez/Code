@@ -1,0 +1,26 @@
+Prompt
+
+Table: music_streams(user_id, play_date)
+Task: Find users who streamed music on 3 consecutive calendar days (or more). Return one row per user_id.
+
+
+
+
+
+
+WITH consecutive_calendar_table AS (
+           SELECT
+                       user_id,
+                       play_date,
+                       LAG(play_date, 1) OVER (PARTITION BY user_id ORDER BY play_date) AS previous_day,
+                       LEAD(play_date, 1) OVER (PARTITION BY user_id ORDER BY play_date) AS next_day
+           FROM
+                       music_streams
+  ) 
+SELECT DISTINCT
+       user_id
+FROM
+       consecutive_calendar_table
+WHERE 
+         DATEDIFF(play_date, previous_day)= 1
+         AND DATEDIFF(next_day, play_date)=1
