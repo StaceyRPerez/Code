@@ -1,0 +1,29 @@
+Prompt
+
+Table: gym_visits(user_id, visit_date)
+Task: Find users who visited the gym on 3 consecutive calendar days (or more). Return one row per user_id.
+
+
+
+
+
+WITH consecutive_calendar_table AS (
+           SELECT
+                       user_id,
+                       visit_date,
+                       LAG(visit_date, 1) OVER (PARTITION BY user_id ORDER BY visit_date) AS previous_day,
+                       LEAD(visit_date, 1) OVER (PARTITION BY user_id ORDER BY visit_date) AS next_day
+           FROM
+                       gym_visits
+  ) 
+SELECT DISTINCT
+       user_id
+FROM
+       consecutive_calendar_table
+WHERE 
+         DATEDIFF(visit_date, previous_day)= 1
+         AND DATEDIFF(next_day, visit_date)=1
+
+
+#CTE statement used to clean up code
+#LAG & LEAD used to test in final statement
